@@ -12,14 +12,18 @@ subprojects {
     group = 'com.unidev.platform'
     version = "$project.platformVersion"
 
-	repositories {
-		mavenCentral()
-		jcenter()
-	}
-    
-	apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
-    apply from: 'http://dev.local/gradle/uploadArchives.groovy'
-    apply from: 'http://dev.local/gradle/javadoc.groovy'
+    if (project.hasProperty('unidevEnv')) {  //gradlew build  -PunidevEnv
+
+        println "Tasks:"
+        apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
+        apply from: 'http://dev.local/gradle/uploadArchives.groovy'
+        apply from: 'http://dev.local/gradle/javadoc.groovy'
+    } else {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+    }
 
     dependencies {
 
