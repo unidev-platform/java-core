@@ -1,3 +1,6 @@
+project.ext.springVersion="4.3.4.RELEASE"
+project.ext.platformVersion = "2.1.0-SNAPSHOT"
+
 subprojects {
     apply plugin: 'maven'
     apply plugin: 'java'
@@ -7,7 +10,7 @@ subprojects {
     targetCompatibility = 1.8
 
     group = 'com.unidev.platform'
-    version = '2.1.0-SNAPSHOT'
+    version = "$project.platformVersion"
 
 	repositories {
 		mavenCentral()
@@ -19,6 +22,7 @@ subprojects {
     apply from: 'http://dev.local/gradle/javadoc.groovy'
 
     dependencies {
+
         testCompile 'org.hamcrest:hamcrest-all:1.3'
         testCompile 'junit:junit:4.12'
         testCompile 'org.mockito:mockito-all:1.10.19'

@@ -1,0 +1,10 @@
+dependencies {
+	compile "org.springframework:spring-context:$project.springVersion"
+	compile "org.springframework:spring-beans:$project.springVersion"
+	compile "org.springframework:spring-core:$project.springVersion"
+	compile "org.springframework:spring-expression:$project.springVersion"
+	compile "org.springframework:spring-aop:$project.springVersion"
+
+	compile "org.springframework:spring-test:$project.springVersion"
+}
+
