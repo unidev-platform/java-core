@@ -13,8 +13,7 @@ subprojects {
     version = "$project.platformVersion"
 
     if (project.hasProperty('unidevEnv')) {  //gradlew build  -PunidevEnv
-
-        println "Tasks:"
+        println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
         apply from: 'http://dev.local/gradle/uploadArchives.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
