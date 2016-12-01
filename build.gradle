@@ -1,6 +1,21 @@
 project.ext.springVersion="4.3.4.RELEASE"
 project.ext.platformVersion = "2.1.0-SNAPSHOT"
 
+if (project.hasProperty('travisEnv')) {
+
+
+    buildscript {
+        repositories {
+            jcenter()
+        }
+        dependencies {
+            classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+        }
+    }
+    apply plugin: 'com.jfrog.bintray'
+}
+
+
 subprojects {
     apply plugin: 'maven'
     apply plugin: 'java'
@@ -25,9 +40,6 @@ subprojects {
     }
 
     if (project.hasProperty('travisEnv')) {
-        plugins {
-            id "com.jfrog.bintray" version "1.7"
-        }
 
         bintray {
             user = System.getenv('BINTRAY_USER')
