@@ -24,6 +24,26 @@ subprojects {
         }
     }
 
+    if (project.hasProperty('travisEnv')) {
+        plugins {
+            id "com.jfrog.bintray" version "1.7"
+        }
+
+        bintray {
+            user = System.getenv('BINTRAY_USER')
+            key = System.getenv('BINTRAY_KEY')
+
+            pkg {
+                repo = 'unidev-platform'
+                name = 'unidev-platform'
+                userOrg = 'denis256'
+                licenses = ['Apache-2.0']
+                vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
+            }
+        }
+
+    }
+
     dependencies {
 
         testCompile 'org.hamcrest:hamcrest-all:1.3'
