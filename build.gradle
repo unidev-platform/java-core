@@ -9,7 +9,7 @@ if (project.hasProperty('travisEnv')) {
     }
 
     plugins {
-        id "com.jfrog.bintray" version "1.7" apply false
+        id "com.jfrog.bintray" version "1.7"
     }
 
     bintray {
@@ -49,10 +49,6 @@ subprojects {
             mavenCentral()
             jcenter()
         }
-    }
-
-    if (project.hasProperty('travisEnv')) {
-        apply plugin 'com.jfrog.bintray'
     }
 
     dependencies {
