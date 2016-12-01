@@ -45,7 +45,7 @@ subprojects {
             pkg {
                 repo = 'unidev-platform'
                 name = 'unidev-platform'
-                userOrg = 'denis256'
+                userOrg = 'universal-development'
                 licenses = ['Apache-2.0']
                 vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
             }
