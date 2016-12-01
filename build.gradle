@@ -2,18 +2,30 @@ project.ext.springVersion="4.3.4.RELEASE"
 project.ext.platformVersion = "2.1.0-SNAPSHOT"
 
 if (project.hasProperty('travisEnv')) {
-
-
     buildscript {
         repositories {
             jcenter()
         }
-        dependencies {
-            classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+    }
+
+    plugins {
+        id "com.jfrog.bintray" version "1.7"
+    }
+
+    bintray {
+        user = System.getenv('BINTRAY_USER')
+        key = System.getenv('BINTRAY_KEY')
+
+        pkg {
+            repo = 'unidev-platform'
+            name = 'unidev-platform'
+            userOrg = 'denis256'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
         }
     }
-    apply plugin: 'com.jfrog.bintray'
 }
+
 
 
 subprojects {
@@ -37,23 +49,6 @@ subprojects {
             mavenCentral()
             jcenter()
         }
-    }
-
-    if (project.hasProperty('travisEnv')) {
-
-        bintray {
-            user = System.getenv('BINTRAY_USER')
-            key = System.getenv('BINTRAY_KEY')
-
-            pkg {
-                repo = 'unidev-platform'
-                name = 'unidev-platform'
-                userOrg = 'denis256'
-                licenses = ['Apache-2.0']
-                vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
-            }
-        }
-
     }
 
     dependencies {
