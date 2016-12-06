@@ -5,6 +5,8 @@ package com.unidev.platform.common.exception;
  */
 public class UnidevRuntimeException extends RuntimeException {
 
+    private static final long serialVersionUID = 1L;
+
     public UnidevRuntimeException() {
         super();
     }
