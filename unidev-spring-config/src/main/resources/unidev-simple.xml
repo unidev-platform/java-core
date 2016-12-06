@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- simplified configuration loading -->
+    <import resource="classpath*:*-beans.xml" />
+    <context:annotation-config />
+    <context:component-scan base-package="com.unidev" />
+    <!--
+        Properties loading from classpath, envirnoment variable and user home
+        -DENV=prod
+    -->
+    <bean id="propertyConfigurer" class="com.unidev.platform.spring.common.PropertiesConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/application.properties</value>
+                <value>classpath*:/application.#{systemProperties['ENV']}.properties</value>
+                <value>file://${user.home}/${application.name}/application.properties</value>
+                <value>file://${user.home}/${application.name}/application.#{systemProperties['ENV']}.properties</value>
+            </list>
+        </property>
+    </bean>
+</beans>
