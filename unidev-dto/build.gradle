@@ -1,0 +1,3 @@
+apply plugin: 'java'
+project.sourceCompatibility = "1.7"
+project.targetCompatibility = "1.7"
