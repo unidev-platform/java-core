@@ -82,15 +82,20 @@ subprojects {
                 userOrg = 'universal-development'
                 licenses = ['Apache-2.0']
                 vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
+
+                version {
+                    name = version
+                }
             }
         }
 
         publishing {
             publications {
-                mavenJava(MavenPublication) {  // Artifacts to publish
+                MyPublication(MavenPublication) {
                     from components.java
-                    artifact sourceJar
-                    artifact javadocJar
+                    groupId 'com.unidev.platform'
+
+                    version version
                 }
             }
         }
