@@ -30,6 +30,23 @@ subprojects {
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
         apply from: 'http://dev.local/gradle/uploadArchives.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
+
+
+        task sourcesJar(type: Jar, dependsOn: classes) {
+            classifier = 'sources'
+            from sourceSets.main.allSource
+        }
+
+        task javadocJar(type: Jar, dependsOn: javadoc) {
+            classifier = 'javadoc'
+            from javadoc.destinationDir
+        }
+
+        artifacts {
+            archives sourcesJar
+            archives javadocJar
+        }
+
     } else {
         repositories {
             mavenCentral()
@@ -55,20 +72,7 @@ subprojects {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
 
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
-        from javadoc.destinationDir
-    }
-
-    artifacts {
-        archives sourcesJar
-        archives javadocJar
-    }
 
     if (project.hasProperty('travisEnv')) {
 
