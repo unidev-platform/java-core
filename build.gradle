@@ -75,31 +75,13 @@ subprojects {
 
 
     if (project.hasProperty('travisEnv')) {
-
-        bintray {
-            user = System.getenv('BINTRAY_USER')
-            key = System.getenv('BINTRAY_KEY')
-
-            pkg {
-                repo = 'unidev-platform'
-                name = 'unidev-platform'
-                userOrg = 'universal-development'
-                licenses = ['Apache-2.0']
-                vcsUrl = 'https://github.com/unidev-platform/unidev-platform.git'
-
-                version {
-                    name = version
-                }
-            }
-        }
-
-        publishing {
-            publications {
-                MyPublication(MavenPublication) {
-                    from components.java
-                    groupId 'com.unidev.platform'
-
-                    version version
+        uploadArchives {
+                repositories {
+                    mavenDeployer {
+                        name = 'unidev-platform'
+                        repository(id: 'unidev-platformy', url: 'https://api.bintray.com/content/universal-development/unidev-platform/unidev-platform/'+ project.version){
+                            authentication(userName: System.getenv('BINTRAY_USER'), password: System.getenv('BINTRAY_KEY'))
+                    }
                 }
             }
         }
