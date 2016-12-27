@@ -1,4 +1,6 @@
 # unidev-platform
+[![Build Status](https://travis-ci.org/unidev-platform/unidev-platform.svg?branch=master)](https://travis-ci.org/unidev-platform/unidev-platform)
+
 unidev-platform
 
 Common components used in Unidev
