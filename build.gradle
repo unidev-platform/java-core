@@ -4,10 +4,6 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.jfrog.bintray" version "1.7"
-}
-
 
 project.ext.springVersion="4.3.4.RELEASE"
 project.ext.platformVersion = "2.1.0-SNAPSHOT"
@@ -28,7 +24,7 @@ subprojects {
     if (project.hasProperty('unidevEnv')) {  //gradlew build  -PunidevEnv
         println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
-        apply from: 'http://dev.local/gradle/uploadArchives.groovy'
+        apply from: 'http://dev.local/gradle/uploadArchivesOSS.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
 
 
