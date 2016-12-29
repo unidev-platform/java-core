@@ -7,5 +7,6 @@ include "unidev-spring-config"
 
 include "unidev-j2ee"
 include "unidev-logger"
-include 'unidev-dto'
-include 'unidev-exception'
+include "unidev-dto"
+include "unidev-exception"
+include "unidev-strings"
