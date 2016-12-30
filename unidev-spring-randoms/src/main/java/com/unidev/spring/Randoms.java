@@ -51,6 +51,10 @@ public class Randoms {
         return value;
     }
 
+    /**
+     * Get random value from var-arg
+     * @return
+     */
     public  <T> T randomValue(T... array) {
         if (array == null || array.length == 0) {
             LOG.warn("Can't get random value from array {}", array);
@@ -62,22 +66,18 @@ public class Randoms {
     }
 
     /**
-     * Generate random value from dictionary
-     * @param dictionary
-     * @param minlength
-     * @param maxlength
-     * @param firstCharUpcase
+     * Generate sequence of random values from provided dictionary string
      * @return
      */
-    public  String randomValue(String dictionary, int minlength, int maxlength, boolean firstCharUpcase) {
-        int count = minlength + random.nextInt(maxlength - minlength);
+    public  String randomValue(String dictionary, int minLength, int maxLength, boolean firstCharUpperCase) {
+        int count = minLength + random.nextInt(maxLength - minLength);
         String result = "";
         for (int i = 0; i < count; i++) {
             int id = random.nextInt(dictionary.length());
             Character c = dictionary.charAt(id);
-            if (i == 0)
-                if (firstCharUpcase)
-                    c = Character.toUpperCase(c);
+            if (i == 0 && firstCharUpperCase) {
+                c = Character.toUpperCase(c);
+            }
             result += c;
         }
         return result;
@@ -85,8 +85,6 @@ public class Randoms {
 
     /**
      * Get random sleep value in seconds
-     * @param min Min value
-     * @param max Max value
      * @return Selected sleep value
      */
     public  int randomSleepValue(int min, int max) {
@@ -100,8 +98,6 @@ public class Randoms {
 
     /**
      * Get random value between min and max
-     * @param min
-     * @param max
      * @return
      */
     public  long randomValue(long min, long max) {
@@ -113,8 +109,6 @@ public class Randoms {
 
     /**
      * Get random values from collection
-     * @param list
-     * @param count
      * @return
      */
     public <T> List<T> randomValues(List<T> list, int count) {
