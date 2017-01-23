@@ -10,6 +10,7 @@ import java.util.*;
 
 /**
  * Component for fetching random values
+ * In Spring Context is required to exist Random instance
  * @author denis
  */
 @Component
@@ -126,8 +127,11 @@ public class Randoms {
         return random;
     }
 
-    @Autowired
     public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Randoms(@Autowired Random random) {
         this.random = random;
     }
 }
