@@ -5,7 +5,7 @@ include "unidev-spring-common"
 include "unidev-spring-mvc"
 include "unidev-spring-config"
 include "unidev-spring-randoms"
-include "unidev-spring-process"
+include "unidev-spring-processes"
 
 include "unidev-j2ee"
 include "unidev-logger"
