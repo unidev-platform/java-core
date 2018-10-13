@@ -4,10 +4,8 @@ buildscript {
     }
 }
 
-
 project.ext.springVersion="4.3.4.RELEASE"
 project.ext.platformVersion = "2.1.0"
-
 
 subprojects {
     apply plugin: 'maven'
@@ -21,7 +19,7 @@ subprojects {
     group = 'com.unidev.platform'
     version = "$project.platformVersion"
 
-    if (project.hasProperty('unidevEnv')) {  //gradlew build  -PunidevEnv
+    if (project.hasProperty('unidevEnv')) {  //gradlew -PunidevEnv build
         println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
         apply from: 'http://dev.local/gradle/uploadArchivesOSS.groovy'
@@ -50,10 +48,7 @@ subprojects {
         }
     }
 
-
-
     dependencies {
-
         testCompile 'org.hamcrest:hamcrest-all:1.3'
         testCompile 'junit:junit:4.12'
         testCompile 'org.mockito:mockito-all:1.10.19'
@@ -68,7 +63,6 @@ subprojects {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
-
 
     if (project.hasProperty('travisEnv')) {
         uploadArchives {
