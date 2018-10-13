@@ -6,7 +6,7 @@ buildscript {
 
 
 project.ext.springVersion="4.3.4.RELEASE"
-project.ext.platformVersion = "2.1.0-SNAPSHOT"
+project.ext.platformVersion = "2.1.0"
 
 
 subprojects {
