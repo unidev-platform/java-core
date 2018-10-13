@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.unidev" />
     <!--
         Properties loading from classpath, envirnoment variable and user home
-        -DENV=prod
+        -DENV=prod or/and provide full path with APP_CONFIG variable
     -->
     <bean id="propertyConfigurer" class="com.unidev.platform.spring.common.PropertiesConfigurer">
         <property name="ignoreResourceNotFound" value="true"/>
@@ -22,6 +22,7 @@
                 <value>classpath*:/application.#{systemProperties['ENV']}.properties</value>
                 <value>file://${user.home}/${application.name}/application.properties</value>
                 <value>file://${user.home}/${application.name}/application.#{systemProperties['ENV']}.properties</value>
+                <value>file://#{systemProperties['APP_CONFIG']}</value>
             </list>
         </property>
     </bean>
