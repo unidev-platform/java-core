@@ -102,6 +102,12 @@ public class HTTPClient {
         init(userAgents);
     }
 
+    public void init(String socksIP, int socksPort) {
+        createProxyConnectionManager(socksIP, socksPort);
+        init(Strings.EMPTY);
+    }
+
+
     /**
      * Build request configuration
      */
