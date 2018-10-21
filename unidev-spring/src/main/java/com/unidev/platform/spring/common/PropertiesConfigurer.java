@@ -51,8 +51,10 @@ public class PropertiesConfigurer extends PropertyPlaceholderConfigurer {
         propertiesMap = new HashMap<String, String>();
         for (Object key : props.keySet()) {
             String keyStr = key.toString();
-            propertiesMap.put(keyStr, parseStringValue(props.getProperty(keyStr),
-                    props, new HashSet()));
+
+
+            propertiesMap.put(keyStr, resolvePlaceholder(props.getProperty(keyStr),
+                    props));
         }
     }
     public Map getPropertiesMap() {
