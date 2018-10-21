@@ -1,4 +1,4 @@
-package com.unidev.platform.components.http;
+package com.unidev.platform.http;
 
 import javax.net.ssl.ManagerFactoryParameters;
 import javax.net.ssl.TrustManager;

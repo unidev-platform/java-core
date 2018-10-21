@@ -1,4 +1,4 @@
-package com.unidev.platform.components.http;
+package com.unidev.platform.http;
 
 
 import java.util.ArrayList;

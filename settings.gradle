@@ -6,3 +6,6 @@ include "unidev-spring"
 include "unidev-j2ee"
 include "unidev-dto"
 include "unidev-exception"
+
+include "unidev-http-client"
+//include "unidev-http-client-proxy"
