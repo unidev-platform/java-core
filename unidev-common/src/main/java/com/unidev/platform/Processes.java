@@ -15,21 +15,16 @@
  */
 package com.unidev.platform;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Native processes operations
  */
 
+@Slf4j
 public class Processes {
 
-    private static Logger LOG = LoggerFactory.getLogger(Processes.class);
+   // private static Logger LOG = LoggerFactory.getLogger(Processes.class);
     // /**
     //  * Call command and get result as string
     //  * @param app

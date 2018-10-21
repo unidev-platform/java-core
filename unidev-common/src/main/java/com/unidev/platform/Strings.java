@@ -15,15 +15,17 @@
  */
 package com.unidev.platform;
 
+import java.util.Random;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Random;
-
 /**
- * Apache string utils with extensions used in U development
+ * Extenstion of StringUtils with code used in unidev.
+ * @see StringUtils
  * @author denis
  */
-public class Strings  extends StringUtils{
+@Slf4j
+public class Strings extends StringUtils {
 
     /**
      * Remove first value between begin end, if not pattern not found return null
