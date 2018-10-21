@@ -3,6 +3,8 @@ package com.unidev.platform.http;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.config.RequestConfig.Builder;
 
 /**
  * Common utils class

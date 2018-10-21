@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
@@ -40,11 +39,9 @@ import org.apache.http.util.EntityUtils;
  */
 public class HTTPClient {
 
-    public static final String HTTPClient = "httpClient";
-
     protected Randoms randoms;
 
-    protected Strings strins;
+    protected Strings strings;
 
     protected PoolingHttpClientConnectionManager connectionManager = null;
     protected HttpClient httpClient;
@@ -58,9 +55,19 @@ public class HTTPClient {
 
     public HTTPClient(Randoms randoms, Strings strings) {
         this.randoms = randoms;
-        this.strins = strings;
+        this.strings = strings;
+        init(HTTPClientUtils.USER_AGENTS);
     }
 
+    public HTTPClient(Randoms randoms, Strings strings, String userAgent) {
+        this.randoms = randoms;
+        this.strings = strings;
+        init(userAgent);
+    }
+
+    /**
+     * Re-use existing http client builder.
+     */
     public void init(HttpClientBuilder httpClientBuilder) {
         httpClientBuilder.setDefaultCookieStore(basicCookieStore);
         httpClientBuilder.setDefaultRequestConfig(buildRequestConfig().build());
@@ -74,12 +81,8 @@ public class HTTPClient {
      */
     public void init(String userAgent) {
         HttpClientBuilder builder = HttpClients.custom();
-        if (userAgent != null && !StringUtils.isBlank(userAgent)) {
-            builder.setUserAgent(userAgent);
-        }
-        builder.setDefaultCookieStore(basicCookieStore);
-        builder.setDefaultRequestConfig(buildRequestConfig().build());
-        httpClient = builder.build();
+        builder.setUserAgent(userAgent);
+        init(builder);
     }
 
     /**
@@ -89,8 +92,7 @@ public class HTTPClient {
         return RequestConfig.custom().setCircularRedirectsAllowed(true)
             .setConnectTimeout(connectionTimeout)
             .setConnectionRequestTimeout(connectionTimeout)
-            .setSocketTimeout(connectionTimeout)
-            ;
+            .setSocketTimeout(connectionTimeout);
     }
 
     /**
@@ -287,9 +289,6 @@ public class HTTPClient {
         return null;
     }
 
-    // ================================================================================================================
-
-
     public HttpClient getHttpClient() {
         return httpClient;
     }
@@ -370,4 +369,12 @@ public class HTTPClient {
         this.basicCookieStore = basicCookieStore;
     }
 
+    public PoolingHttpClientConnectionManager getConnectionManager() {
+        return connectionManager;
+    }
+
+    public void setConnectionManager(
+        PoolingHttpClientConnectionManager connectionManager) {
+        this.connectionManager = connectionManager;
+    }
 }
