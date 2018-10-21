@@ -31,7 +31,7 @@ subprojects {
     if (project.hasProperty('unidevEnv')) {  //gradlew -PunidevEnv build
         println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
-        apply from: 'http://dev.local/gradle/uploadArchivesOSS.groovy'
+        apply from: 'http://dev.local/gradle/uploadArchives.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
 
 
