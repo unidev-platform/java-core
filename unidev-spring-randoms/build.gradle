@@ -1,5 +1,0 @@
-dependencies {
-	compile project(":unidev-spring-common")
-	compile project(":unidev-logger")
-}
-

@@ -1,17 +1,9 @@
 rootProject.name = 'unidev-platform'
 
-
+include "unidev-common"
 include "unidev-spring"
-
-/*
-include "unidev-spring-mvc"
-include "unidev-spring-config"
-include "unidev-spring-randoms"
-include "unidev-spring-processes"
-*/
 
 include "unidev-j2ee"
 include "unidev-logger"
 include "unidev-dto"
 include "unidev-exception"
-include "unidev-strings"

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.unidev.platform.spring;
+package com.unidev.platform;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +25,7 @@ import java.util.*;
 
 /**
  * Component for fetching random values
- * In Spring Context is required to exist Random instance
- * @author denis
  */
-@Component
 public class Randoms {
 
     private static Logger LOG = LoggerFactory.getLogger(Randoms.class);

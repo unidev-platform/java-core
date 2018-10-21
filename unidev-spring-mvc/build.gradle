@@ -1,7 +1,0 @@
-dependencies {
-    compile project(":unidev-spring-common")
-    compile project(":unidev-j2ee")
-
-    compile "org.springframework:spring-webmvc:$project.springVersion"
-    compile "org.springframework:spring-context-support:$project.springVersion"
-}
