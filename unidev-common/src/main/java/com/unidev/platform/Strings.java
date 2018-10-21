@@ -81,5 +81,23 @@ public class Strings extends StringUtils {
     public static String genHash(String str, int minLength, int maxLength) {
         return genHash(str, minLength, maxLength, "abcdefghiklmnopqrstxyz0123456789");
     }
+
+
+    @Deprecated
+    public static String genLegacyHash(String string) {
+        String result = "";
+        Random random = new Random(string.hashCode());
+        int length = 8 + random.nextInt(4);
+        for (int i = 0; i < length; i++) {
+            int k = random.nextInt(2);
+            if (k == 0) {
+                result += (char)(((int)'A') + random.nextInt(20));
+            }
+            if (k == 1) {
+                result += (char)(((int)'a') + random.nextInt(20));
+            }
+        }
+        return result;
+    }
 }
 
