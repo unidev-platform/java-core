@@ -54,6 +54,7 @@ public class Strings extends StringUtils {
      * @param dictionary
      * @return
      */
+    @Deprecated
     public static String genHash(String str, int minLength, int maxLength, String dictionary) {
         StringBuilder stringBuilder = new StringBuilder();
         Random random = new Random(str.hashCode());
@@ -72,6 +73,7 @@ public class Strings extends StringUtils {
      * @param maxLength
      * @return
      */
+    @Deprecated
     public static String genHash(String str, int minLength, int maxLength) {
         return genHash(str, minLength, maxLength, "abcdefghiklmnopqrstxyz0123456789");
     }
