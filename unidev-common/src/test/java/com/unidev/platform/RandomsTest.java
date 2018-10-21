@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class RandomsTest {
 
-    Randoms randoms;
+    private Randoms randoms;
 
     @BeforeEach
     void init() {
