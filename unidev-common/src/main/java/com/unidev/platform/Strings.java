@@ -27,6 +27,10 @@ import org.apache.commons.lang3.StringUtils;
 @Slf4j
 public class Strings extends StringUtils {
 
+    public String cleanPage(String page) {
+        return page.replace("\n", " ").replace("\t", " ").replaceAll(" +", " ").trim();
+    }
+
     /**
      * Remove first value between begin end, if not pattern not found return null
      * @param content Content which should be updated
