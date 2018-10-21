@@ -26,4 +26,8 @@
             </list>
         </property>
     </bean>
+
+    <bean id="randomUtils" class="com.unidev.platform.common.utils.RandomUtils" />
+    <bean id="stringUtils" class="com.unidev.platform.common.utils.StringUtils" />
+
 </beans>
