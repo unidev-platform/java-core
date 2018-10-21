@@ -10,7 +10,7 @@ plugins {
 
 
 project.ext.springVersion="5.1.1.RELEASE"
-project.ext.platformVersion = "3.0.2"
+project.ext.platformVersion = "3.0.3"
 
 allprojects {
 
