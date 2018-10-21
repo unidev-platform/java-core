@@ -1,0 +1,9 @@
+def httpClientVersion = '4.5.6'
+
+dependencies {
+    compile project(':unidev-common')
+    compile "org.apache.httpcomponents:httpclient:$httpClientVersion"
+    compile "org.apache.httpcomponents:httpmime:$httpClientVersion"
+    compile "org.apache.httpcomponents:httpcore:$httpClientVersion"
+
+}
