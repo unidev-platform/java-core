@@ -4,6 +4,5 @@ include "unidev-common"
 include "unidev-spring"
 
 include "unidev-j2ee"
-include "unidev-logger"
 include "unidev-dto"
 include "unidev-exception"
