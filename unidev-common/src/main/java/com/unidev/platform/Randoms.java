@@ -45,7 +45,6 @@ public class Randoms {
      */
     public  <T> T randomValue(List<T> list) {
         if (CollectionUtils.isEmpty(list)) {
-
             log.warn("Can't get random value from list {}", list);
             return null;
         }
