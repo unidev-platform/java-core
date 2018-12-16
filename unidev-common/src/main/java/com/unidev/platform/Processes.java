@@ -53,7 +53,7 @@ public class Processes {
         try {
             executor.execute(commandLine);
         } catch (IOException e) {
-            log.warn("Execution of {} failed ", processToRun, e);
+            log.warn("Execution of {} failed {}", processToRun, outputStream.toString(), e);
             throw new UnidevRuntimeException(e);
         }
 
@@ -61,7 +61,7 @@ public class Processes {
     }
 
     public String runBash(String command) {
-        return runProcess(ProcessToRun.builder().command("/bin/bash -c " + command).build());
+        return runProcess(ProcessToRun.builder().command("/bin/bash -c \"" + command + "\"").build());
     }
 
      /**

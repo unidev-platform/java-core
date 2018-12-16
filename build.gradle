@@ -10,7 +10,7 @@ plugins {
 
 
 project.ext.springVersion="5.1.1.RELEASE"
-project.ext.platformVersion = "3.0.4"
+project.ext.platformVersion = "3.1.0-SNAPSHOT"
 
 allprojects {
 
@@ -66,6 +66,7 @@ subprojects {
 
     dependencies {
         compile 'org.slf4j:slf4j-api:1.7.21'
+        compile 'org.slf4j:slf4j-simple:1.7.21'
         compileOnly 'org.projectlombok:lombok:1.18.2'
 
         testCompile 'org.mockito:mockito-all:1.10.19'
