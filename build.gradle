@@ -28,12 +28,17 @@ subprojects {
     group = 'com.unidev.platform'
     version = "$project.platformVersion"
 
-    if (project.hasProperty('unidevEnv')) {  //gradlew -PunidevEnv build
+    if (!project.hasProperty('unidevEnv')) {  //gradlew -PunidevEnv build
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+
+    } else {
         println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
         apply from: 'http://dev.local/gradle/uploadArchives.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
-
 
         task sourcesJar(type: Jar, dependsOn: classes) {
             classifier = 'sources'
@@ -48,12 +53,6 @@ subprojects {
         artifacts {
             archives sourcesJar
             archives javadocJar
-        }
-
-    } else {
-        repositories {
-            mavenCentral()
-            jcenter()
         }
     }
 
