@@ -21,6 +21,9 @@ public class StatItem {
     }
 
     public float average() {
+        if (count == 0) {
+            return 0;
+        }
         return total / (float) count;
     }
 

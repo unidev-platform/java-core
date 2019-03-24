@@ -31,9 +31,7 @@ public class StatisticsManager {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Statistics: \n");
-        statistics.entrySet().forEach(item -> {
-            stringBuilder.append(item.getKey() + " : " + item.getValue() + "\n");
-        });
+        statistics.entrySet().forEach(item -> stringBuilder.append(item.getKey() + " : " + item.getValue() + "\n"));
 
         return stringBuilder.toString();
     }

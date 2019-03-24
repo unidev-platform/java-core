@@ -10,7 +10,7 @@ plugins {
 
 
 project.ext.springVersion="5.1.1.RELEASE"
-project.ext.platformVersion = "3.2.0-SNAPSHOT"
+project.ext.platformVersion = "3.2.1-SNAPSHOT"
 
 allprojects {
 
@@ -33,7 +33,6 @@ subprojects {
             mavenCentral()
             jcenter()
         }
-
     } else {
         println "Unidev Envirnoment build"
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
@@ -44,19 +43,15 @@ subprojects {
             classifier = 'sources'
             from sourceSets.main.allSource
         }
-
         task javadocJar(type: Jar, dependsOn: javadoc) {
             classifier = 'javadoc'
             from javadoc.destinationDir
         }
-
         artifacts {
             archives sourcesJar
             archives javadocJar
         }
     }
-
-
     lombok {
         version = '1.18.2'
         sha256 = ""
