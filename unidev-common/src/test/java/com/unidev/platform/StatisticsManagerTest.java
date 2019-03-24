@@ -10,11 +10,6 @@ public class StatisticsManagerTest {
 
     private StatisticsManager statisticsManager;
 
-    @BeforeEach
-    void init() {
-        statisticsManager = new StatisticsManager();
-    }
-
     @Test
     public void statItem() {
         StatItem statItem = StatItem.builder().build();
@@ -30,6 +25,27 @@ public class StatisticsManagerTest {
         assertThat(statItem.getTotal()).isEqualTo(30);
         assertThat(statItem.getLastValue()).isEqualTo(20);
         assertThat(statItem.average()).isEqualTo(15);
+    }
+
+
+    @Test
+    public void statisticManager() {
+        statisticsManager = new StatisticsManager();
+
+        statisticsManager.add("test1");
+        statisticsManager.add("test1");
+        statisticsManager.add("test2", 666);
+
+        StatItem test1 = statisticsManager.fetchStat("test1");
+        StatItem test2 = statisticsManager.fetchStat("test2");
+
+        assertThat(test1).isNotNull();
+        assertThat(test1.getCount()).isEqualTo(2);
+        assertThat(test1.getTotal()).isEqualTo(2);
+
+        assertThat(test2).isNotNull();
+        assertThat(test2.getLastValue()).isEqualTo(666);
+        assertThat(test2.getCount()).isEqualTo(1);
     }
 
 }
