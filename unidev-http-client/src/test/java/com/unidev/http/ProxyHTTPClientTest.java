@@ -22,8 +22,10 @@ import com.unidev.platform.Strings;
 import com.unidev.platform.http.HTTPClient;
 import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class ProxyHTTPClientTest {
 
     HTTPClient httpClient;
