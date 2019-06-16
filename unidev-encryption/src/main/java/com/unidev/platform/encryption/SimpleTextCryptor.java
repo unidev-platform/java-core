@@ -3,13 +3,13 @@ package com.unidev.platform.encryption;
 import com.unidev.platform.common.exception.UnidevRuntimeException;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.crypto.cipher.CryptoCipher;
 import org.apache.commons.crypto.utils.Utils;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
@@ -17,6 +17,7 @@ import java.util.Properties;
 /**
  * Simple text encryptor
  */
+@Slf4j
 public class SimpleTextCryptor {
 
     @Getter
@@ -31,43 +32,57 @@ public class SimpleTextCryptor {
     @Setter
     private String transform = "AES/CBC/PKCS5Padding";
 
-    public String encrypt(String input) {
+    @Getter
+    @Setter
+    private int bufferSize = 1024;
 
+    public String encrypt(String input) {
         Properties properties = new Properties();
 
-
         final ByteBuffer outBuffer;
-        final int bufferSize = 1024;
-        final int updateBytes;
-        final int finalBytes;
 
         try (CryptoCipher encipher = Utils.getCipherInstance(transform, properties)) {
 
             ByteBuffer inBuffer = ByteBuffer.allocateDirect(bufferSize);
             outBuffer = ByteBuffer.allocateDirect(bufferSize);
             inBuffer.put(getUTF8Bytes(input));
-
-            inBuffer.flip(); // ready for the cipher to read it
-            // Show the data is there
-            System.out.println("inBuffer=" + asString(inBuffer));
-
-            // Initializes the cipher with ENCRYPT_MODE,key and iv.
+            inBuffer.flip();
             encipher.init(Cipher.ENCRYPT_MODE, key, iv);
-            // Continues a multiple-part encryption/decryption operation for byte buffer.
-            updateBytes = encipher.update(inBuffer, outBuffer);
-            System.out.println(updateBytes);
+            encipher.update(inBuffer, outBuffer);
+            encipher.doFinal(inBuffer, outBuffer);
+            outBuffer.flip();
+            byte[] array = new byte[outBuffer.remaining()];
+            outBuffer.get(array);
 
-            // We should call do final at the end of encryption/decryption.
-            finalBytes = encipher.doFinal(inBuffer, outBuffer);
-            System.out.println(finalBytes);
-
-            //return Base64Utils.base64ToString(outBuffer);
+            return Base64Utils.byteArrayToBase64(array);
 
         } catch (Exception e) {
+            log.error("Failed to do encoding", e);
             throw new UnidevRuntimeException(e);
         }
+    }
 
-        return "";
+    /**
+     * Decode base64 string
+     * @param string
+     * @return
+     */
+    public String decrypt(String string) {
+        ByteBuffer inBuffer = ByteBuffer.allocateDirect(bufferSize);
+        inBuffer.put(Base64Utils.base64ToByteArray(string));
+        inBuffer.flip();
+        Properties properties = new Properties();
+        try (CryptoCipher decipher = Utils.getCipherInstance(transform, properties)) {
+            decipher.init(Cipher.DECRYPT_MODE, key, iv);
+            ByteBuffer decoded = ByteBuffer.allocateDirect(bufferSize);
+            decipher.update(inBuffer, decoded);
+            decipher.doFinal(inBuffer, decoded);
+            decoded.flip();
+            return asString(decoded);
+        } catch (Exception e) {
+            log.error("Failed to decode", e);
+            throw new UnidevRuntimeException(e);
+        }
     }
 
     public static byte[] getUTF8Bytes(String input) {

@@ -4,12 +4,12 @@ import java.util.Base64;
 
 public class Base64Utils {
 
-    public static String stringToBase64(String input) {
-        return Base64.getEncoder().withoutPadding().encodeToString(input.getBytes());
+    public static byte[] base64ToByteArray(String input) {
+        return Base64.getDecoder().decode(input);
     }
 
-    public static String base64ToString(String input) {
-        return new String(Base64.getDecoder().decode(input));
+    public static String byteArrayToBase64(byte[] input) {
+        return new String(Base64.getEncoder().encode(input));
     }
 
 }
