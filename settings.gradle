@@ -8,4 +8,6 @@ include "unidev-j2ee"
 include "unidev-dto"
 include "unidev-exception"
 
+include "unidev-encryption"
+
 include "unidev-http-client"
