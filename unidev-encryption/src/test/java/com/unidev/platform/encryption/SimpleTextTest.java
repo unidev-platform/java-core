@@ -7,7 +7,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import static com.unidev.platform.encryption.SimpleTextCryptor.getUTF8Bytes;
 
-public class SimpleTextCryptorTest {
+
+public class SimpleTextTest {
 
     @Test
     public void testEncryption() {
