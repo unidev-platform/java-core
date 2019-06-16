@@ -66,7 +66,7 @@ public class Randoms {
         int id = random.nextInt(size);
         Iterator<T> iterator = collection.iterator();
         T value = null;
-        for(int i = 0;i<id;i++) {
+        for(int i = 0;i<=id;i++) {
             value = iterator.next();
         }
         return value;
