@@ -86,16 +86,4 @@ subprojects {
         useJUnitPlatform()
     }
 
-    if (project.hasProperty('travisEnv')) {
-        uploadArchives {
-                repositories {
-                    mavenDeployer {
-                        name = 'unidev-platform'
-                        repository(id: 'unidev-platformy', url: 'https://api.bintray.com/content/universal-development/unidev-platform/unidev-platform/'+ project.version){
-                            authentication(userName: System.getenv('BINTRAY_USER'), password: System.getenv('BINTRAY_KEY'))
-                    }
-                }
-            }
-        }
-    }
 }
