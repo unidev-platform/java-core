@@ -28,7 +28,7 @@ subprojects {
     group = 'com.unidev.platform'
     version = "$project.platformVersion"
 
-    if (project.hasProperty('nonUnidevEnv')) {  //gradlew -PnonUnidevEnv build
+    if (!project.hasProperty('unidevEnv')) {  //gradlew -PunidevEnv build
         repositories {
             mavenCentral()
             jcenter()
