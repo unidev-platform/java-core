@@ -2,4 +2,4 @@ language: java
 jdk:
   - openjdk11
 script:
-  - ./gradlew -PtravisEnv clean build
+  - ./build_travis.sh
