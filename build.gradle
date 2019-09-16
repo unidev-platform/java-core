@@ -35,6 +35,7 @@ subprojects {
         }
     } else {
         println "Unidev Envirnoment build"
+        // http://dev.local/gradle/uploadArchivesG5.groovy
         apply from: 'http://dev.local/gradle/defaultRepositories.groovy'
         apply from: 'http://dev.local/gradle/uploadArchives.groovy'
         apply from: 'http://dev.local/gradle/javadoc.groovy'
