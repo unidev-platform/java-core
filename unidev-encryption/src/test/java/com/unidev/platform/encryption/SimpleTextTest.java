@@ -1,5 +1,6 @@
 package com.unidev.platform.encryption;
 
+import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.spec.IvParameterSpec;
@@ -24,6 +25,16 @@ public class SimpleTextTest {
         String decryptedValue = simpleTextCryptor.decrypt(encryptedValue);
 
         assertEquals(input, decryptedValue);
+
+        String input2 = "encryption test " + System.currentTimeMillis();
+        for(int i = 1;i<2000;i++) {
+            input2 += i + " " + new Date();
+        }
+
+        String encryptedValue2 = simpleTextCryptor.encrypt(input2);
+        String decryptedValue2 = simpleTextCryptor.decrypt(encryptedValue2);
+        assertEquals(input2, decryptedValue2);
+
     }
 
 }

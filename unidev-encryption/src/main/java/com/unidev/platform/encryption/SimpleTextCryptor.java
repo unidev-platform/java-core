@@ -32,10 +32,6 @@ public class SimpleTextCryptor {
     @Setter
     private String transform = "AES/CBC/PKCS5Padding";
 
-    @Getter
-    @Setter
-    private int bufferSize = 1024;
-
     public String encrypt(String input) {
         Properties properties = new Properties();
 
@@ -43,9 +39,11 @@ public class SimpleTextCryptor {
 
         try (CryptoCipher encipher = Utils.getCipherInstance(transform, properties)) {
 
-            ByteBuffer inBuffer = ByteBuffer.allocateDirect(bufferSize);
-            outBuffer = ByteBuffer.allocateDirect(bufferSize);
-            inBuffer.put(getUTF8Bytes(input));
+            byte[] data = getUTF8Bytes(input);
+            int size = Math.round(data.length / 1024f) * 1024 + 1024;
+            ByteBuffer inBuffer = ByteBuffer.allocateDirect(size);
+            outBuffer = ByteBuffer.allocateDirect(size);
+            inBuffer.put(data);
             inBuffer.flip();
             encipher.init(Cipher.ENCRYPT_MODE, key, iv);
             encipher.update(inBuffer, outBuffer);
@@ -68,13 +66,15 @@ public class SimpleTextCryptor {
      * @return
      */
     public String decrypt(String string) {
-        ByteBuffer inBuffer = ByteBuffer.allocateDirect(bufferSize);
-        inBuffer.put(Base64Utils.base64ToByteArray(string));
+        byte[] data = Base64Utils.base64ToByteArray(string);
+        int size = Math.round(data.length / 1024f) * 1024 + 1024;
+        ByteBuffer inBuffer = ByteBuffer.allocateDirect(size);
+        inBuffer.put(data);
         inBuffer.flip();
         Properties properties = new Properties();
         try (CryptoCipher decipher = Utils.getCipherInstance(transform, properties)) {
             decipher.init(Cipher.DECRYPT_MODE, key, iv);
-            ByteBuffer decoded = ByteBuffer.allocateDirect(bufferSize);
+            ByteBuffer decoded = ByteBuffer.allocateDirect(size);
             decipher.update(inBuffer, decoded);
             decipher.doFinal(inBuffer, decoded);
             decoded.flip();
