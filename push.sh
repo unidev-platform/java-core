@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -x
 
-./gradlew publish -PunidevEnv
+./gradlew uploadArchives -PunidevEnv
 
