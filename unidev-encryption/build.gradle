@@ -1,4 +1,4 @@
 dependencies {
-    compile project(':unidev-exception')
-    compile 'org.apache.commons:commons-crypto:1.0.0'
+    implementation project(':unidev-exception')
+    api 'org.apache.commons:commons-crypto:1.0.0'
 }
