@@ -1,7 +1,7 @@
 dependencies {
-	compile project(":unidev-j2ee")
-	compile project(":unidev-common")
-	compile project(":unidev-http-client")
+	implementation project(":unidev-j2ee")
+	implementation project(":unidev-common")
+	implementation project(":unidev-http-client")
 	compile "org.springframework:spring-context:$project.springVersion"
 	compile "org.springframework:spring-beans:$project.springVersion"
 	compile "org.springframework:spring-core:$project.springVersion"

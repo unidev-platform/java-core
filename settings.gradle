@@ -1,13 +1,11 @@
 rootProject.name = 'unidev-platform'
 
-
-include "unidev-common"
-include "unidev-spring"
-
-include "unidev-j2ee"
-include "unidev-dto"
-include "unidev-exception"
-
-include "unidev-encryption"
-
-include "unidev-http-client"
+include (
+        "unidev-common",
+        "unidev-spring",
+        "unidev-j2ee",
+        "unidev-dto",
+        "unidev-exception",
+        "unidev-encryption",
+        "unidev-http-client"
+)

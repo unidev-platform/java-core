@@ -7,7 +7,10 @@ Common components used in unidev.
 
 ## Tech stack
 
-Based on: Spring 5.x, JUnit 5, Apache HTTP Client
+Based on: 
+* Spring 5.x
+* JUnit 5
+* Apache HTTP Client
 
 ## Versions
 
