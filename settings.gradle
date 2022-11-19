@@ -7,5 +7,4 @@ include (
         "unidev-dto",
         "unidev-exception",
         "unidev-encryption",
-        "unidev-http-client"
 )

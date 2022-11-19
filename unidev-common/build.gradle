@@ -4,8 +4,6 @@ dependencies {
 
     api 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
 
-    api 'com.unidev.idgenerator:youtube-id-generator:0.0.1'
-
     api 'org.apache.commons:commons-lang3:3.8.1'
     api 'org.apache.commons:commons-collections4:4.2'
     api 'commons-io:commons-io:2.6'

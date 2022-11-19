@@ -1,12 +1,11 @@
 dependencies {
 	implementation project(":unidev-j2ee")
 	implementation project(":unidev-common")
-	implementation project(":unidev-http-client")
-	compile "org.springframework:spring-context:$project.springVersion"
-	compile "org.springframework:spring-beans:$project.springVersion"
-	compile "org.springframework:spring-core:$project.springVersion"
-	compile "org.springframework:spring-expression:$project.springVersion"
-	compile "org.springframework:spring-aop:$project.springVersion"
+	api "org.springframework:spring-context:$project.springVersion"
+	api "org.springframework:spring-beans:$project.springVersion"
+	api "org.springframework:spring-core:$project.springVersion"
+	api "org.springframework:spring-expression:$project.springVersion"
+	api "org.springframework:spring-aop:$project.springVersion"
 
-	compile "org.springframework:spring-test:$project.springVersion"
+	api "org.springframework:spring-test:$project.springVersion"
 }
