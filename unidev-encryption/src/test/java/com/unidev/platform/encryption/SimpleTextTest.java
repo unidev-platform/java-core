@@ -1,10 +1,10 @@
 package com.unidev.platform.encryption;
 
-import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Date;
 
 import static com.unidev.platform.encryption.SimpleTextCryptor.getUTF8Bytes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
