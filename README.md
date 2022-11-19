@@ -1,22 +1,33 @@
 # unidev-platform
-[![Build Status](https://travis-ci.org/unidev-platform/unidev-platform.svg?branch=master)](https://travis-ci.org/unidev-platform/unidev-platform)
 
-unidev-platform
+Java building blocks.
 
-Common components used in unidev.
+```
+repositories {
+    maven {
+        url "https://mvn.universal-development.com/public" 
+    }
+}
+...
+implementation 'com.unidev.platform:unidev-dto:4.0.0'
+```
 
 ## Tech stack
 
 Based on: 
+* Java 17
 * Spring 5.x
 * JUnit 5
-* Apache HTTP Client
 
 ## Versions
 
-Stable versions: 1.2.0, 2.1.0
+Stable versions: 
+* 1.2.0
+* 2.1.0
+* 3.1.1
 
-In development versions: 3.0.0
+In development versions: 
+* 4.0.x
 
 # License
 
