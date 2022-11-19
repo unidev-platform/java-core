@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FixedThreadManagerTest {
 
-    private AtomicInteger startCount = new AtomicInteger(0);
-    private AtomicInteger stopCount = new AtomicInteger(0);
+    private final AtomicInteger startCount = new AtomicInteger(0);
+    private final AtomicInteger stopCount = new AtomicInteger(0);
 
     @Test
     public void testScheduling() throws InterruptedException {

@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StatisticsManager {
 
     @Getter
-    private Map<String, StatItem> statistics = new ConcurrentHashMap<>();
+    private final Map<String, StatItem> statistics = new ConcurrentHashMap<>();
 
     public void add(String key) {
         add(key, 1L);

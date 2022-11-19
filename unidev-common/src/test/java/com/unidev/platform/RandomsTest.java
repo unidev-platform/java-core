@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -19,7 +20,7 @@ public class RandomsTest {
 
     @Test
     void testOneElementSelection() {
-        String value = randoms.randomValue(Arrays.asList("potato"));
+        String value = randoms.randomValue(List.of("potato"));
         assertThat(value).isNotNull();
         assertThat(value).isEqualTo("potato");
 

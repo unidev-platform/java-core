@@ -11,9 +11,9 @@ import java.util.concurrent.Future;
  */
 public class ExecutorServiceManager {
 
-    private ExecutorService executorService;
+    private final ExecutorService executorService;
 
-    private Collection<Future<?>> submittedJobs = new ConcurrentLinkedQueue<>();
+    private final Collection<Future<?>> submittedJobs = new ConcurrentLinkedQueue<>();
 
     public ExecutorServiceManager(ExecutorService executorService) {
         this.executorService = executorService;

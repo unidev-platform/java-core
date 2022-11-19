@@ -39,7 +39,7 @@ public class Processes {
         try {
             executor.execute(commandLine);
         } catch (IOException e) {
-            log.warn("Execution of {} failed {}", processToRun, outputStream.toString(), e);
+            log.warn("Execution of {} failed {}", processToRun, outputStream, e);
             throw new UnidevRuntimeException(e);
         }
 
