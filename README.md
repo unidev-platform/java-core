@@ -27,7 +27,7 @@ Stable versions:
 * 3.1.1
 
 In development versions: 
-* 4.0.x
+* 4.a.b
 
 # License
 
