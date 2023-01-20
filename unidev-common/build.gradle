@@ -2,11 +2,11 @@
 dependencies {
     implementation project(':unidev-exception')
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
+    api "com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion"
 
-    api 'org.apache.commons:commons-lang3:3.8.1'
-    api 'org.apache.commons:commons-collections4:4.2'
-    api 'commons-io:commons-io:2.6'
-    api 'org.apache.commons:commons-exec:1.3'
+    api "org.apache.commons:commons-lang3:$commonsLang3Version"
+    api "org.apache.commons:commons-collections4:$commonsCollections4Version"
+    api "commons-io:commons-io:$commonsIoVersion"
+    api "org.apache.commons:commons-exec:$commonsExecVersion"
 
 }
