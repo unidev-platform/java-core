@@ -74,27 +74,27 @@ public class Randoms {
      */
     public  String randomValue(String dictionary, int minLength, int maxLength, boolean firstCharUpperCase) {
         int count = minLength + random.nextInt(maxLength - minLength);
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < count; i++) {
             int id = random.nextInt(dictionary.length());
             Character c = dictionary.charAt(id);
             if (i == 0 && firstCharUpperCase) {
                 c = Character.toUpperCase(c);
             }
-            result += c;
+            result.append(c);
         }
-        return result;
+        return result.toString();
     }
 
     /**
      * Get random sleep value in seconds
      * @return Selected sleep value
      */
-    public  int randomSleepValue(int min, int max) {
+    public  long randomSleepValue(long min, long max) {
         if (min == max) {
             return min;
         }
-        int sleep = 1000 + (1000 * (min + random.nextInt(max -  min)));
+        long sleep = 1000 + (1000 * (min + random.nextInt((int) (max -  min))));
         log.debug("Selected sleep value {}", sleep);
         return sleep;
     }
